@@ -162,6 +162,4 @@ if os.getcwd() == '/app':
     DATABASES['default'].update(db_from_env)
 
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    ALLOWED_HOSTS = ['petshop.herokuapp.com']
-    DEBUG = True
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
