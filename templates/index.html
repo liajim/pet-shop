@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/sweetalert.css' %}">
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+{% endblock %}
+{% block main_content %}
+<h1 class="mt-4">Pet List</h1>
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="petTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th width="5%"></th>
+                        <th width="10%">Name</th>
+                        <th width="5%">Specie</th>
+                        <th width="5%">Breed</th>
+                        <th width="5%">Sex</th>
+                        <th width="5%">Age</th>
+                        <th width="5%">Price</th>
+                        {% if user.customer %}
+                        <th width="5%"></th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Specie</th>
+                        <th>Breed</th>
+                        <th>Sex</th>
+                        <th>Age</th>
+                        <th>Price</th>
+                        {% if user.customer %}
+                        <th></th>
+                        {% endif %}
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<form>
+{% csrf_token %}
+</form>
+{% endblock %}
+{% block jsbody %}
+<script type="text/javascript">
+    var has_customer = {% if user.customer %}true{% else %}false{% endif %};
+    var customer_id = {% if user.customer %}{{user.customer.id}}{% else %}null{% endif %};
+</script>
+<script type="text/javascript" src="{% static 'js/sweetalert.min.js' %}"></script>
+<script src="{% static 'project/api/api.js' %}"></script>
+<script src="{% static 'project/api/apiCustomerInternal.js' %}"></script>
+<script src="{% static 'project/pet/index.js' %}"></script>
+{% endblock %}
