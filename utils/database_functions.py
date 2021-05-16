@@ -1,5 +1,5 @@
 from django.db.models import Case, When, Value, CharField, Q
-from django.db.models.functions import Concat
+from django.db.models.functions import Concat, Cast
 
 from pets.models import Pet
 
@@ -67,7 +67,7 @@ def query_pets_by_args(**kwargs):
 
     queryset = Pet.objects.annotate(age_str=annotate_age(),
                                     price_str=Case(When(price__isnull=True, then=Value('For Adoption')),
-                                                   default='price', output_field=CharField()))
+                                                   default=Cast('price', CharField()), output_field=CharField()))
 
     def get_q_list(search_value):
         q_list = Q(id__icontains=search_value)
