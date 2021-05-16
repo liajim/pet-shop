@@ -29,3 +29,7 @@ class PetAdmin(CSVAdmin):
         if row[8].strip() != '':
             data['price'] = row[8]
         Pet.objects.create(**data)
+
+
+admin.site.register(Breed)
+admin.site.register(Specie)

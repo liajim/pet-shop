@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-*803_v=#!rqtrfuic8b!ghn&z(1(6ry$kix)ib3@n1g&3fod-=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pet-shop-mijail.herokuapp.com']
+ALLOWED_HOSTS = ['pet-shop-mijail.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -160,6 +160,6 @@ if os.getcwd() == '/app':
     import dj_database_url
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
-
+    DEBUG = False
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
