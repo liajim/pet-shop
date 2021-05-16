@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-*803_v=#!rqtrfuic8b!ghn&z(1(6ry$kix)ib3@n1g&3fod-=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pet-shop-mijail.herokuapp.com']
 
 
 # Application definition
